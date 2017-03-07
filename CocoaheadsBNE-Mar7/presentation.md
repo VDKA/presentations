@@ -1,12 +1,22 @@
 # Cocoaheads
 
---- 
+---
 
 ## Playgroundscon
 
 Great talks which will be available some time in the future on skilled.io
 
 playgroundscon.com
+
+---
+
+## WWDC 2017
+
+^ McEnery Convention Center, San Jose
+
+^ Registration opens Monday, March 27
+
+![](WWDC2017.png)
 
 ---
 
@@ -35,7 +45,7 @@ struct OuterGeneric<T> {
  struct InnerNonGeneric {}
  struct InnerGeneric<T> {}
 }
-extension OuterNonGeneric.InnerGeneric {} 
+extension OuterNonGeneric.InnerGeneric {}
 ```
 
 ---
@@ -44,7 +54,7 @@ extension OuterNonGeneric.InnerGeneric {}
 
 This will be quite similar to Swift 3.0.
 
-The largest difference between 2 -> 3 and 3 -> 4 will be source compatibility.
+The largest difference between 2 -> 3 and 3 -> 4 will be **source compatibility**.
 
 ---
 
@@ -56,11 +66,17 @@ The largest difference between 2 -> 3 and 3 -> 4 will be source compatibility.
 
 ---
 
+## Getting to Swift 3 at AirBnB
+
+https://medium.com/airbnb-engineering/getting-to-swift-3-at-airbnb-79a257d2b656
+
+---
+
 ## Migrating Firefox for iOS to Swift 3.0
 
-Includes a useful list of what caused compiler segfaults during.
+^ Includes a useful list of what caused compiler segfaults during.
 
-Also worth noting is that the Firefox app is all open source.
+Worth noting is that the Firefox app is all open source.
 
 https://github.com/mozilla-mobile/firefox-ios
 https://mozilla-mobile.github.io/ios/firefox/swift/core/2017/02/22/migrating-to-swift-3.0.html
@@ -97,7 +113,34 @@ https://github.com/apple/swift/blob/master/docs/OwnershipManifesto.md
 
 ---
 
-## Effective use of shadows and blurring 
+## That One Optional Property
+
+```swift
+// from this
+var notificationMessage: String?
+
+// to this
+enum Mode {
+    case fromNotification(message: String)
+    case normal
+}
+
+var mode: Mode
+```
+
+^ Article by Soroush Khanlou
+
+^ Talks about the clarity of using your own enum type rather than using the less contextually clear Optional type
+
+^ ask yourself, what does this optional really mean? Is there a better way to represent this data?
+
+^ Also yes to nested types
+
+http://khanlou.com/2017/03/that-one-optional-property/
+
+---
+
+## Effective use of shadows and blurring
 
 A discussion on how, when and why to use these effects in your UI's
 
@@ -105,7 +148,31 @@ https://www.smashingmagazine.com/2017/02/shadows-blur-effects-user-interface-des
 
 ---
 
-## Cool Libs
+## Open Source
+
+---
+
+## Hydra (Promises)
+
+^ Javascript in Swift
+
+```swift
+func getImage(url: String) -> Promise<UIImage> {
+    return Promise<UIImage>(in: .background, { resolve, reject in
+        self.dataTask(with: request, completionHandler: { data, response, error in
+            if let error = error {
+                reject(error)
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                resolve((data, response))
+            } else {
+                reject("Image cannot be decoded")
+            }
+        }).resume()
+    })
+}
+```
+
+https://github.com/malcommac/Hydra
 
 ---
 
@@ -124,9 +191,21 @@ https://github.com/ArtSabintsev/Guitar
 
 ## PanelKit
 
+^ Does modal, popover, floating and pinned panelling for you
+
 ![inline](PanelKit.gif)
 
 https://github.com/louisdh/panelkit
+
+---
+
+## ElongationPreview
+
+Push Pop style View Controller
+
+![inline](ElongationPreview.gif)
+
+https://github.com/Ramotion/elongation-preview
 
 ---
 
@@ -141,6 +220,8 @@ https://github.com/jerkoch/SwipeCellKit
 
 ## Twitter Image Pipeline
 
+Blog post and Open Source Framework built for loading and caching images in the Twitter app.
+
 https://blog.twitter.com/2017/introducing-twitter-image-pipeline-ios-framework-for-open-source
 https://github.com/twitter/ios-twitter-image-pipeline
 
@@ -151,3 +232,22 @@ https://github.com/twitter/ios-twitter-image-pipeline
 ![inline](Attabench-screenshot.png)
 
 https://github.com/lorentey/Attabench
+
+---
+
+# Call for speakers
+
+^ We desperately need speakers
+Is it valuable to have a list of ideas people can look into
+A voting board
+Typically we are pretty bad at remembering to do this
+
+^ Next up: Rob talking about Mobile Device Management
+
+---
+
+# Slack
+
+## brisbane.herokuapp.com
+
+^ For anybody not in the slack group
