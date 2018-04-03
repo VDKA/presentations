@@ -117,7 +117,7 @@ Dependent upon the provider website auto sign in behavior
 # tattn/MoreCodable
 
 
-Makes Swift's `Codable` better
+Extends Swift's `Codable` capabilities
 
 ```swift
 enum CodingKeys: String, RuleBasedCodingKey {
